@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+        
+        <title>
+            {% block title %}
+            | Register
+            {% endblock %} 
+        </title>
+        
+
+            {% block content %}
+            <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout text-dark">
+
+        {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <p id="message_timeout" class='alert alert-success float-center text-center message-text bg-light text-dark'> 
+                    <i class="fa-solid fa-check"></i>&nbsp;
+                    {{msg}}</p>
+               
+            {% endif %}
+        {% endfor %}
+
+
+        <h3 class="text-center p-3">Login to your account</h3>
+        
+        <form method='POST' autocomplete='off'>
+
+            {% csrf_token %}
+
+            {{ form.username | as_crispy_field }}
+            <br>
+           
+            {{ form.password | as_crispy_field }}
+            <br>
+            
+            
+                <button type='submit'  class='btn btn-primary btn-lg w-100 btn-block p-4 text-light btn-style'>login
+
+                </button>
+            </form>
+
+
+            <p class='m-3 text-center'>Don't have an account?  <a class="text-decoration-none text-dark" href="{% url 'register' %}">SignUp</a> </p>
+
+           
+
+            <p class='m-1 text-center'> <a class="text-decoration-none text-dark text-muted" href="{% url 'reset_password' %}">forgot your password! </a> </p>
+
+    </div>
+
+
+    {% endblock content %}

@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/slate/bootstrap.min.css">
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel='stylesheet' type="text/css" href="{% static 'css/style.css' %}">
+
+    <title>BrickThoughts
+        {% block title %}
+        
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+     
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center text-dark">
+
+        <a class="navbar-brand main-heading" href="{% url 'index' %}"> 
+                
+          &nbsp; BrickThoughts
+        
+        </a>
+    
+    
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+    
+        </button>
+    
+    
+          <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+    
+            
+            <ul class="navbar-nav ms-auto">
+    
+    
+              &nbsp;     &nbsp;     &nbsp; 
+              {% if request.user.is_authenticated %}
+              
+          
+                <a class="btn btn-primary navbar-btn text-light font-weight-bold " type="button"  href="{% url 'dashboard' %}">Dashboard</a>
+                &nbsp;     &nbsp; 
+                <a class="btn btn-primary navbar-btn text-light font-weight-bold " type="button"  href="{% url 'myThoughts' %}">MyThoughts</a>
+              &nbsp;     &nbsp; 
+              <li class="nav-item ">
+          
+                <a class="btn btn-primary navbar-btn text-light " type="button"  href="{% url 'postThought' %}">Post</a>
+    
+              </li>
+              &nbsp;     &nbsp; 
+              <li class="nav-item ">
+          
+                <a class="btn btn-primary navbar-btn text-light " type="button"  href="{% url 'userLogout' %}">LogOut</a>
+    
+              </li>
+
+              {% else %}
+              &nbsp;     &nbsp; 
+              <li class="nav-item">
+          
+                <a class="btn btn-primary navbar-btn text-light" type="button"  href="{% url 'register' %}">Register</a>
+    
+              </li>
+    
+    
+              &nbsp;     &nbsp;     &nbsp; 
+              
+              
+              <li class="nav-item">
+    
+                <a class="btn btn-primary navbar-btn text-light" type="button"  href="{% url 'userLogin' %}">Login</a>
+    
+              </li>
+    
+    
+              &nbsp;     &nbsp;     &nbsp; 
+              
+              {% endif %}
+            </ul>
+          
+            
+          </div>
+    
+    
+    </nav>
+
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <div class=''>
+      {% block content %}
+      {% endblock content %}
+    </div>
+   
+
+
+
+
+    <script src="{% static 'js/main.js'%}" ></script>
+
+
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
+
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+
+        crossorigin="anonymous">
+
+        </script>
+</body>
+</html>

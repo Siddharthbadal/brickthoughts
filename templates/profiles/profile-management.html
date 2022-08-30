@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+ 
+<div class="container bg-white shadow-md p-5 mt-5 form-layout text-dark">
+
+    {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <p id="message_timeout" class='alert alert-success float-center text-center message-text'> {{msg}}</p>
+               
+            {% endif %}
+        {% endfor %}
+
+
+
+    <h2>Profile</h2>
+
+    <form method='POST' autocomplete='off' enctype='multipart/form-data' >
+
+        {% csrf_token %}
+
+        {{ form.username | as_crispy_field }}
+        <br>
+       
+        {{ form.email | as_crispy_field }}
+        <br> 
+
+        
+        
+            <button type='submit'  class='btn btn-success btn-lg w-100 btn-block p-4 text-light mt-5'>Update
+
+            </button>
+        </form>
+    </div>
+
+    
+        <div class="container bg-white shadow-md p-5 mt-5 form-layout text-dark">
+
+
+        <form method='POST' autocomplete='off' enctype='multipart/form-data' >
+
+            {% csrf_token %}
+    
+            
+    
+            {{ form2.about | as_crispy_field }}
+            <br>
+    
+            {{ form2.place | as_crispy_field }}
+            <br>
+    
+            {{ form2.link | as_crispy_field }}
+            <br>
+            
+            {{ form2.profile_pic }}
+            <br>
+            
+                <button type='submit'  class='btn btn-success btn-lg w-100 btn-block p-4 text-light mt-5'>Update
+    
+                </button>
+            </form>
+    
+</div>
+
+<div class='container bg-white shadow-md p-5 mt-3 form-layout text-dark'>
+    <h5 class='text-center'>Change your password</h5>
+    <a class="btn btn-primary navbar-btn text-light mt-3 w-100 btn-block p-2 m-auto" type="button"  href="{% url 'reset_password' %}">Reset</a>
+    
+</div>
+
+<div class='container bg-white shadow-md p-5 mt-3 form-layout text-dark'>
+    <h5 class='text-center'>Delete Your Account</h5>
+    <a class="btn btn-primary navbar-btn text-light mt-3 w-100 btn-block p-2 m-auto" type="button"  href="{% url 'deleteAccount' %}">Delete Account</a>
+    
+</div>
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+ 
+<div class="container bg-white shadow-md p-5 mt-3 form-layout text-dark">
+
+    {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <h5 id="message_timeout" class='alert alert-success float-center text-center message-text bg-light text-dark'> 
+                    <i class="fa-solid fa-check"></i>&nbsp;
+
+                    {{msg}}
+                </h5>
+               
+            {% endif %}
+        {% endfor %}
+
+
+
+    <h3 class='text-center mb-3'>Dashboard</h3>
+    <img src={{profile.profile_pic.url}} class='profile-img w-100 h-auto' alt='upload your image' style="border-radius:10%;"/>
+    <br>
+    <h3>@{{user.username}}</h3>
+    <p>{{profile.about}}</p>
+    <p class='mb-1'>
+        <i class="fa-solid fa-link"></i>
+
+        {{profile.link}}</p>
+    
+    <p class='text-muted mb-0'> <span><i class="fa-solid fa-globe"></i>
+
+    </span > {{profile.place}}&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+    <span><i class="fa-solid fa-calendar-days"></i>
+
+    </span>{{profile.created_at |date:"M-Y" }}</p>
+    
+    
+</div>
+
+
+<div class='container bg-white shadow-md p-5 mt-3 form-layout text-dark'>
+    <h5 class='text-center'>Manage Your Profile</h5>
+    <a class="btn btn-primary navbar-btn text-light mt-5 w-100 btn-block p-2 " type="button"  href="{% url 'manageProfile' %}">Profile</a>
+    
+</div>
+
+
+
+
+
+{% endblock content %}

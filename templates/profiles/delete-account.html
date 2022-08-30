@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+ 
+<div class="container bg-white shadow-md p-5 mt-5 form-layout text-dark">
+
+  <form method='POST' autocomplete='off'>
+
+    {% csrf_token %}
+
+      <h3>Delete this account</h3>
+      <button type='submit' class='btn btn-success w-25 btn-sm p-1 text-dark mr-5 text-dark'><a class='text-decoration-none text-light' href="{% url 'dashboard' %}" />Go Back </a>
+
+      </button>
+
+      <button type='submit'  class='btn btn-danger btn-sm w-25 btn-block p-1 text-light ml-5 text-dark'>Delete
+
+      </button>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}

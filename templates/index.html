@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+            <br>
+            
+            {% for msg in messages %}
+                {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <h5 id="message_timeout" class='alert alert-success float-center text-center message-text w-25 m-auto mb-2 bg-light text-dark'> {{msg}}</h5>
+                
+                {% endif %}
+            {% endfor %}
+
+            <h4 class='text-center mb-3 text-light'>Trending Thoughts</h4>
+            {% for thought in page_obj %}
+    <div class="container bg-white shadow-md p-3 form-layout text-dark mb-3 w-50 mypostcard ">
+           
+        
+
+           <p class='title mb-1'>  {{thought.title}} </p>
+            
+            <p class=''>{{thought.content}}</p>
+            <small class='text-muted'><span class=''>{{thought.created }} </span></small>
+            <div class='mt-1'>
+            <img src="{{thought.user.profile.profile_pic.url}}" class='
+            rounded-circle' style='width:5%;'/>
+           
+                
+            <small class='text-muted'><a href="{% url  'userProfile' thought.user.id %}" class='text-dark h6 text-decoration-none'>&nbsp;@{{thought.user.username | title}}</a> </small> 
+        
+        </div>
+   
+          </div>
+    {% endfor %}
+
+
+    <div class="pagination  mb-2">
+      <span class="step-links  m-auto">
+          {% if page_obj.has_previous %}
+              <a class='text-light' href="?page=1">&laquo; first</a>
+              <a class='text-light' href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+  
+          <span class="current text-light">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+          </span>
+  
+          {% if page_obj.has_next %}
+              <a class='text-light' href="?page={{ page_obj.next_page_number }}">next</a>
+              <a class='text-light' href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
+
+
+ 
+{% endblock content %}

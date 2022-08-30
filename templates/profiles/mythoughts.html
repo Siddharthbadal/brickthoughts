@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+      
+        <title>
+            {% block title %}
+            | MyThoughts
+            {% endblock %} 
+        </title>
+        
+
+{% block content %}
+            <br>
+            <h1 class='text-light text-center'>
+                Thoughts.. .
+            </h1>
+            {% for msg in messages %}
+                {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <h5 id="message_timeout" class='alert alert-success float-center text-center message-text w-25 m-auto mb-2 bg-light text-dark'> <i class="fa-solid fa-check"></i>&nbsp;{{msg}}</h5>
+                
+                {% endif %}
+            {% endfor %}
+
+           {% if thoughts %} 
+            {% for thought in thoughts %}
+    <div class="container bg-white shadow-md p-5 form-layout text-dark mb-3 mypostcard">
+        
+        
+
+           <p class='title'>  {{thought.title}} </p>
+            
+            {{thought.content}}
+            <br>
+            
+                <small class='text-muted'><span class=''>{{thought.created}} </span></small>
+           
+            <br>
+            <a class="btn btn-primary navbar-btn text-light mt-4 btn-sm font-weight-bold" type="button"  href="{% url 'updateThought' thought.id %}">Update</a>
+
+            <a class="btn btn-primary navbar-btn text-light mt-4 ml-4 btn-sm" type="button"  href="{% url 'deleteThought' thought.id %}">Delete</a>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h4 class='text-light text-center'>
+        You haven't shared anything!
+    </h4>
+    {% endif %}
+
+    {% endblock content %}

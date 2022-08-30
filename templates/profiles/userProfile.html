@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<div class="container bg-white shadow-md p-5 mt-3 form-layout text-dark" style="width:40%;">
+    <h2 class='text-center mb-3'>{{profile.user.username | title}}</h2>
+    <img src={{profile.profile_pic.url}} class=' home-profile-img w-50 h-auto' alt='upload your image' style="border-radius:10%;"/>
+    <br>
+    <h6 class='text-muted display-6'>@{{profile.user.username}}</h6>
+    <p>{{profile.about}}</p>
+    <p class='text-dark mb-0' >
+        <i class="fa-solid fa-link"></i>
+
+        <a href='//{{profile.link}}' class='text-dark text-decoration-none' target="_blank">{{profile.link}}</a></p>
+    
+    <p class='mt-0 mb-0'> <span><i class="fa-solid fa-globe"></i>
+
+    </span> {{profile.place}}&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+    <span><i class="fa-solid fa-calendar-days"></i>
+
+    </span>{{profile.created_at |date:"M-Y" }}</p>
+</div>
+           
+            
+    <h5 class='text-center mt-3 mb-2 text-light'>{{profile.user.username | title}}'s Thoughts</h5>
+            {% for thought in thoughts %}
+    <div class="container bg-white shadow-md p-3 form-layout text-dark mb-3 w-50 mypostcard ">
+           
+        
+
+    <p class='title mb-1'>  {{thought.title}} </p>
+    
+    <p class=''>{{thought.content}}</p>
+    <small class='text-muted'><span class=''>{{thought.created }} </span></small>
+    <div class='mt-1'>
+    {% comment %} <img src="{{thought.user.profile.profile_pic.url}}" class='
+    rounded-circle' style='width:10%;'/> {% endcomment %}
+    
+        
+    {% comment %} <small class='text-muted'><a href="{% url  'userProfile' thought.user.id %}" class='text-dark h6 text-decoration-none'>&nbsp;@{{thought.user.username | title}}</a> </small>  {% endcomment %}
+
+        </div>
+   
+          </div>
+    {% endfor %}
+
+
+    
+
+
+ 
+{% endblock content %}
