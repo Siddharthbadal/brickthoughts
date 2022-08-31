@@ -13,10 +13,10 @@ A thoughts sharing social media app.
 
 ### App features
 * User Profile
-* User profile managemment
+* User profile management
 * Create, read, Update and delete posts
 * Create, read, Update and delete profiles
-* View other's profiles and posts
+* View users profiles and posts
 * User own dashboard and profile management page
 * User's posts page
 * Register and login
