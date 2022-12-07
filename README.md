@@ -51,4 +51,3 @@ A thoughts sharing social media app.
 ![img](https://raw.githubusercontent.com/Siddharthbadal/brickthoughts/main/images/update.png)
 
 
-Live link:   https://brickthoughts.herokuapp.com/
