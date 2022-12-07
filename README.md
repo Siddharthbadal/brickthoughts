@@ -28,7 +28,7 @@ A thoughts sharing social media app.
 # Project Screenshots
 
 ### Home Page
-![img](https://raw.githubusercontent.com/Siddharthbadal/brickthoughts/main/images/home.png)
+![img](images/home.png)
 
 ### User SignUp Page
 ![img](https://raw.githubusercontent.com/Siddharthbadal/brickthoughts/main/images/register.png)
